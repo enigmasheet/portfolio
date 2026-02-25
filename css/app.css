@@ -1,0 +1,344 @@
+/* ======================
+   THEME VARIABLES
+====================== */
+:root {
+    --bg: #ffffff;
+    --text-primary: #121212;
+    --btn-bg: #1976d2;
+    --btn-bg-hover: #125ea6;
+    --btn-text: #ffffff;
+    --card-bg: #f8f8f8;
+    scroll-padding-top: 90px; /* Adjust this to your navbar height */
+    scroll-behavior: smooth; /* Optional: adds smooth scrolling */
+}
+
+.dark {
+    --bg: #121212;
+    --text-primary: #eeeeee;
+    --btn-bg: #4dabf5;
+    --btn-bg-hover: #90caf9;
+    --btn-text: #121212;
+    --card-bg: #1e1e1e;
+}
+
+/* ======================
+   BASE STYLES
+====================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-size: clamp(14px, 1.5vw, 18px);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+}
+
+h3 {
+    font-size: clamp(1.3rem, 2.8vw, 2rem);
+}
+
+h4 {
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+}
+
+h5 {
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+}
+
+h6 {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+}
+
+/* ======================
+   LINKS & BUTTONS
+====================== */
+a, .btn-link {
+    color: var(--btn-bg);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+    a:hover, .btn-link:hover {
+        color: var(--btn-bg-hover);
+        opacity: 0.85;
+    }
+
+.btn-primary {
+    display: inline-block;
+    color: var(--btn-text);
+    background-color: var(--btn-bg);
+    border: 1px solid var(--btn-bg-hover);
+    padding: 0.6rem 1.2rem;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    border-radius: 6px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s;
+    will-change: background-color, border-color, transform;
+}
+
+    .btn-primary:not(:disabled) {
+        cursor: pointer;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: var(--btn-bg-hover);
+        border-color: var(--btn-bg-hover);
+        transform: translateY(-1px);
+        outline: none;
+    }
+
+    button:disabled,
+    .btn-primary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+:focus-visible {
+    outline: 2px dashed var(--btn-bg);
+    outline-offset: 2px;
+}
+
+/* ======================
+   CONTAINERS & LAYOUT
+====================== */
+.content {
+    padding: 1.5rem clamp(1rem, 5vw, 2rem);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card, .project-card {
+    background-color: var(--card-bg);
+    padding: clamp(1rem, 2vw, 1.5rem);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover, .project-card:hover {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .project-card img {
+        max-width: 100%;
+        border-radius: 8px;
+        display: block;
+    }
+
+/* ======================
+   SWITCH STYLES
+====================== */
+div.btn-container {
+    display: inline-block; /* fixed */
+    vertical-align: middle;
+    text-align: center;
+}
+
+    div.btn-container i {
+        display: inline-block;
+        position: relative;
+        top: -13px;
+    }
+
+label {
+    font-size: 13px;
+    color: #424242;
+    font-weight: 500;
+}
+
+.btn-color-mode-switch {
+    display: inline-block;
+    margin: 0;
+    position: relative;
+}
+
+    .btn-color-mode-switch > label.btn-color-mode-switch-inner {
+        width: 160px; /* wider */
+        height: 40px; /* taller */
+        border-radius: 30px;
+        background: #E0E0E0;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        display: block;
+    }
+
+        .btn-color-mode-switch > label.btn-color-mode-switch-inner:before {
+            content: attr(data-on);
+            position: absolute;
+            font-size: 14px;
+            font-weight: 500;
+            top: 12px;
+            right: 30px;
+            color: #666;
+        }
+
+        .btn-color-mode-switch > label.btn-color-mode-switch-inner:after {
+            content: attr(data-off);
+            width: 80px; /* wider */
+            height: 30px; /* taller */
+            background: #fff;
+            border-radius: 30px;
+            position: absolute;
+            left: 3px;
+            top: 5px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0px 0px 6px -2px #111;
+            padding: 7px 0;
+            font-size: 14px;
+            line-height: 16px;
+        }
+
+    .btn-color-mode-switch input[type="checkbox"] {
+        cursor: pointer;
+        width: 160px; /* fixed */
+        height: 40px; /* fixed */
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        margin: 0;
+    }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner {
+            background: #151515;
+            color: #fff;
+        }
+
+            .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:after {
+                content: attr(data-on);
+                left: 77px;
+                background: #3c3c3c;
+            }
+
+            .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:before {
+                content: attr(data-off);
+                right: auto;
+                left: 30px;
+            }
+
+        .btn-color-mode-switch input[type="checkbox"]:checked ~ .alert {
+            display: block;
+        }
+
+    .btn-color-mode-switch > .alert {
+        display: none;
+        background: #FF9800;
+        border: none;
+        color: #fff;
+    }
+
+/* ======================
+   MODE PREVIEW
+====================== */
+.dark-preview {
+    background: #0d0d0d;
+}
+
+    .dark-preview div.btn-container i.fa-sun-o {
+        color: #777;
+    }
+
+    .dark-preview div.btn-container i.fa-moon-o {
+        color: #fff;
+        text-shadow: 0 0 11px #fff;
+    }
+
+.white-preview {
+    background: #fff;
+}
+
+    .white-preview div.btn-container i.fa-sun-o {
+        color: #ffa500;
+        text-shadow: 0 0 16px #ffa500;
+    }
+
+    .white-preview div.btn-container i.fa-moon-o {
+        color: #777;
+    }
+
+/* ======================
+   FORM VALIDATION
+====================== */
+.valid.modified:not([type=checkbox]) {
+    outline: 2px solid #26b050;
+}
+
+.invalid {
+    outline: 2px solid #ff4d4f;
+}
+
+.validation-message {
+    color: #ff4d4f;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* ======================
+   BLAZOR ERROR UI
+====================== */
+#blazor-error-ui {
+    background: lightyellow;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+    #blazor-error-ui .dismiss {
+        position: absolute;
+        right: 1rem;
+        top: 0.5rem;
+        cursor: pointer;
+    }
+
+.blazor-error-boundary {
+    background: #b32121;
+    color: white;
+    padding: 1rem 1rem 1rem 3.7rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+    .blazor-error-boundary::after {
+        content: "An error has occurred.";
+        font-weight: bold;
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+    }
+
+/* ======================
+   PARAGRAPH BY CLASS
+====================== */
+
