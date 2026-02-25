@@ -1,0 +1,13 @@
+# robots.txt for abhaymandal.com.np
+User-agent: *
+# Allow everything in root except _framework
+Disallow: /_framework/
+Disallow: /obj/
+Disallow: /bin/
+Disallow: /Properties/
+# Optional: block temporary or hidden files
+Disallow: /.nojekyll
+Disallow: /CNAME
+
+# Sitemap (if you create one)
+Sitemap: https://www.abhaymandal.com.np/sitemap.xml
